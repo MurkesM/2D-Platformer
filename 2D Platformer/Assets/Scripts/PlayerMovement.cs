@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprint_speed = 15;
 
     [Header("Jump")]
-    [SerializeField] float jump_speed = 1000;
-    [SerializeField] float jump_height = 2;
-    Vector3 jump_height_vector;
+    [SerializeField] float jump_force = 1000;
 
     SpriteRenderer renderer;
 
@@ -25,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     {
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-        jump_height_vector = new Vector3(0, jump_height, 0);
     }
 
     void Update()
@@ -40,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
         //could do an if holding left (can move right == false and vice versa).
+
+        //move movement to physics based. Will feel smoother, can still get tight controls and wont 
+        //"glitch" out when running into walls.
 
         if (Input.GetKey(KeyCode.D)) 
             MoveRight();
@@ -59,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.right);
 
             animator.speed = animator_increased_speed;
-            ToggleAnims(anim_params[1]);
+            ToggleAnims(anim_params[1], animator_increased_speed);
         }
         else
         {
@@ -81,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.left);
 
             animator.speed = animator_increased_speed;
-            ToggleAnims(anim_params[1]);
+            ToggleAnims(anim_params[1], animator_default_speed);
         }
         else
         {
@@ -101,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             //jumping isnt working right. jump height doesn't seem to affect anything.
             //probably need to move to rigidi body based jumping and rigidbody based movement
             //need to check if on ground. probably do 2 raycasts
-            transform.Translate(jump_speed * Time.deltaTime * jump_height_vector);
+            transform.Translate(jump_force * Time.deltaTime * Vector2.up);
 
             //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
         }
