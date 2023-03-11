@@ -15,11 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     SpriteRenderer renderer;
 
+    //Animation
     Animator animator;
-    const string IDLE_ANIM = "Idle";
-    const string WALK_ANIM = "Walk";
-    const string RUN_ANIM = "Run";
-    const string JUMP_ANIM = "Jump";
+    const float animator_default_speed = 1;
+    const float animator_increased_speed = 2;
+    readonly string[] anim_params = { "Idle", "Walk", "Jump" };
 
     void Awake()
     {
@@ -38,14 +38,14 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement()
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
-        //TODO: animations aren't setup correctly. Calling ResetTrigger fixes it but it doesn't seem like the correct route.
+        //could do an if holding left (can move right == false and vice versa).
 
         if (Input.GetKey(KeyCode.D)) 
             MoveRight();
         else if (Input.GetKey(KeyCode.A))
             MoveLeft();
-        else 
-            animator.SetTrigger(IDLE_ANIM);
+        else
+            ToggleAnims(anim_params[0]);
     }
 
     void MoveRight()
@@ -54,18 +54,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            //sprint
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.right);
 
-            animator.SetTrigger(RUN_ANIM);
-            animator.ResetTrigger(WALK_ANIM);
+            animator.speed = animator_increased_speed;
+            ToggleAnims(anim_params[1]);
         }
-            
         else
         {
+            //walk
             transform.Translate(move_speed * Time.deltaTime * Vector2.right);
 
-            animator.SetTrigger(WALK_ANIM);
-            animator.ResetTrigger(RUN_ANIM);
+            animator.speed = animator_default_speed;
+            ToggleAnims(anim_params[1]);
         }
     }
 
@@ -75,18 +76,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            //sprint
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.left);
 
-            animator.SetTrigger(RUN_ANIM);
-            animator.ResetTrigger(WALK_ANIM);
+            animator.speed = animator_increased_speed;
+            ToggleAnims(anim_params[1]);
         }
-            
         else
         {
+            //walk
             transform.Translate(move_speed * Time.deltaTime * Vector2.left);
 
-            animator.SetTrigger(WALK_ANIM);
-            animator.ResetTrigger(RUN_ANIM);
+            animator.speed = animator_default_speed;
+            ToggleAnims(anim_params[1]);
         }
             
     }
@@ -97,10 +99,26 @@ public class PlayerMovement : MonoBehaviour
         {
             //jumping isnt working right. jump height doesn't seem to affect anything.
             //probably need to move to rigidi body based jumping and rigidbody based movement
-            //need to check if on ground
+            //need to check if on ground. probably do 2 raycasts
             transform.Translate(jump_speed * Time.deltaTime * jump_height_vector);
 
-            //TODO: Play jump animation
+            //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
+        }
+    }
+
+    void ToggleAnims(string anim_on, float animator_speed = animator_default_speed)
+    {
+        //used to move player walk anim faster so the transition from walk to run is smoother using the same step in the sprite sheet
+        animator.speed = animator_speed;
+
+        //trigger on passed in animation
+        animator.SetTrigger(anim_on);
+
+        //turn off all anim params except the one passed in
+        foreach (string anim_param in anim_params)
+        {
+            if (anim_param != anim_on)
+                animator.ResetTrigger(anim_param);
         }
     }
 }
