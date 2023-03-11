@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     const float animator_default_speed = 1;
     const float animator_increased_speed = 2;
-    readonly string[] anim_params = { "Idle", "Walk", "Jump" };
+    readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
     void Awake()
     {
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleMovement();
         HandleJumping();
+        HandleAttacking();
     }
 
     void HandleMovement()
@@ -95,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleJumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             //jumping isnt working right. jump height doesn't seem to affect anything.
             //probably need to move to rigidi body based jumping and rigidbody based movement
@@ -104,6 +105,15 @@ public class PlayerMovement : MonoBehaviour
 
             //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
         }
+    }
+
+    void HandleAttacking()
+    {
+        //currently does nothing but animate
+        //will probably want to create an IDamagle interface for all our breakable objects
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            ToggleAnims(anim_params[3]);
     }
 
     void ToggleAnims(string anim_on, float animator_speed = animator_default_speed)
