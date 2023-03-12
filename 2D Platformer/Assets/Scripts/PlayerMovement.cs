@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float move_speed = 10;
+    [SerializeField] float walk_speed = 10;
     [SerializeField] float sprint_speed = 15;
 
-    [Header("Jump")]
-    [SerializeField] float jump_force = 1000;
+    Vector2 move_direction;
+    float move_speed;
 
-    SpriteRenderer renderer;
+    [Header("Jump")]
+    [SerializeField] float jump_force = 0;
+
+    SpriteRenderer sprite_renderer;
+    Rigidbody2D rb;
 
     //Animation
     Animator animator;
@@ -21,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        sprite_renderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -32,37 +37,49 @@ public class PlayerMovement : MonoBehaviour
         HandleAttacking();
     }
 
+    void FixedUpdate()
+    {
+        rb.velocity = move_speed * move_direction;
+        rb.AddForce(jump_force * Vector2.up);
+    }
+
+    void HandleIdle()
+    {
+        move_speed = 0;
+
+        ToggleAnims(anim_params[0]);
+    }
+
     void HandleMovement()
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
         //could do an if holding left (can move right == false and vice versa).
-
-        //move movement to physics based. Will feel smoother, can still get tight controls and wont 
-        //"glitch" out when running into walls.
 
         if (Input.GetKey(KeyCode.D)) 
             MoveRight();
         else if (Input.GetKey(KeyCode.A))
             MoveLeft();
         else
-            ToggleAnims(anim_params[0]);
+            HandleIdle();
     }
 
     void MoveRight()
     {
-        renderer.flipX = false; 
+        sprite_renderer.flipX = false;
+
+        move_direction = Vector2.right;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //sprint
-            transform.Translate(sprint_speed * Time.deltaTime * Vector2.right);
+            move_speed = sprint_speed;
 
             ToggleAnims(anim_params[1], animator_increased_speed);
         }
         else
         {
             //walk
-            transform.Translate(move_speed * Time.deltaTime * Vector2.right);
+            move_speed = walk_speed;
 
             ToggleAnims(anim_params[1]);
         }
@@ -70,19 +87,21 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveLeft()
     {
-        renderer.flipX = true;
+        sprite_renderer.flipX = true;
+
+        move_direction = Vector2.left;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //sprint
-            transform.Translate(sprint_speed * Time.deltaTime * Vector2.left);
+            move_speed = sprint_speed;
 
             ToggleAnims(anim_params[1], animator_increased_speed);
         }
         else
         {
             //walk
-            transform.Translate(move_speed * Time.deltaTime * Vector2.left);
+            move_speed = walk_speed;
 
             ToggleAnims(anim_params[1]);
         }
@@ -92,10 +111,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            //jumping isnt working right. jump height doesn't seem to affect anything.
-            //probably need to move to rigidi body based jumping and rigidbody based movement
+            //BUG: cliking jump doesnt always works
+
+            Debug.Log("Jump");
             //need to check if on ground. probably do 2 raycasts
-            transform.Translate(jump_force * Time.deltaTime * Vector2.up);
+
+            move_direction = Vector2.up;
+
+            jump_force = 50;
 
             //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
         }
@@ -103,8 +126,10 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleAttacking()
     {
+        //BUG: Cannot attack again till previous attack anim is complete. Not very fun.
+
         //currently does nothing but animate
-        //will probably want to create an IDamagle interface for all our breakable objects
+        //will probably want to create an IDamagable interface for all our breakable objects
 
         if (Input.GetKeyDown(KeyCode.Space))
             ToggleAnims(anim_params[3]);
