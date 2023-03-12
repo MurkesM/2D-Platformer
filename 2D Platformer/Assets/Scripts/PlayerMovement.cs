@@ -57,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
             //sprint
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.right);
 
-            animator.speed = animator_increased_speed;
             ToggleAnims(anim_params[1], animator_increased_speed);
         }
         else
@@ -65,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
             //walk
             transform.Translate(move_speed * Time.deltaTime * Vector2.right);
 
-            animator.speed = animator_default_speed;
             ToggleAnims(anim_params[1]);
         }
     }
@@ -79,18 +77,15 @@ public class PlayerMovement : MonoBehaviour
             //sprint
             transform.Translate(sprint_speed * Time.deltaTime * Vector2.left);
 
-            animator.speed = animator_increased_speed;
-            ToggleAnims(anim_params[1], animator_default_speed);
+            ToggleAnims(anim_params[1], animator_increased_speed);
         }
         else
         {
             //walk
             transform.Translate(move_speed * Time.deltaTime * Vector2.left);
 
-            animator.speed = animator_default_speed;
             ToggleAnims(anim_params[1]);
         }
-            
     }
 
     void HandleJumping()
