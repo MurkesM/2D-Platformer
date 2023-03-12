@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float move_speed;
 
     [Header("Jump")]
-    [SerializeField] float jump_force = 0;
+    [SerializeField] float jump_force = 50;
 
     SpriteRenderer sprite_renderer;
     Rigidbody2D rb;
@@ -40,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = move_speed * move_direction;
-        rb.AddForce(jump_force * Vector2.up);
     }
 
     void HandleIdle()
@@ -111,16 +108,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            //BUG: cliking jump doesnt always works
-
-            Debug.Log("Jump");
-            //need to check if on ground. probably do 2 raycasts
-
             move_direction = Vector2.up;
 
-            jump_force = 50;
+            rb.AddForce(jump_force * Vector2.up);
 
             //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
+            //need to check if on ground. probably do 2 raycasts
         }
     }
 
