@@ -910,6 +910,10 @@ PrefabInstance:
       propertyPath: sprint_speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8738465951442677642, guid: 58edbde1b1e0a34439bac24b01b7716e, type: 3}
+      propertyPath: animator_controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2ecd9320ba4af3a4fb00dd049fc8d05a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
