@@ -15,10 +15,10 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sprite_renderer;
     Rigidbody2D rb;
 
-    //Animation
+    [Header("Animation")]
     Animator animator;
-    const float animator_default_speed = 1;
-    const float animator_increased_speed = 2;
+    const float walk_animation_speed = 1;
+    const float run_animation_speed = 2;
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
     void Awake()
@@ -38,13 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = move_speed * move_direction;
-    }
-
-    void HandleIdle()
-    {
-        move_speed = 0;
-
-        ToggleAnims(anim_params[0]);
     }
 
     void HandleMovement()
@@ -71,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             //sprint
             move_speed = sprint_speed;
 
-            ToggleAnims(anim_params[1], animator_increased_speed);
+            ToggleAnims(anim_params[1]);
         }
         else
         {
@@ -93,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             //sprint
             move_speed = sprint_speed;
 
-            ToggleAnims(anim_params[1], animator_increased_speed);
+            ToggleAnims(anim_params[1]);
         }
         else
         {
@@ -104,23 +97,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void HandleIdle()
+    {
+        move_speed = 0;
+
+        ToggleAnims(anim_params[0]);
+    }
+
     void HandleJumping()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            move_direction = Vector2.up;
-
             rb.AddForce(jump_force * Vector2.up);
 
             //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
             //need to check if on ground. probably do 2 raycasts
+            //jump needs to be more smooth using add force.
         }
     }
 
     void HandleAttacking()
     {
-        //BUG: Cannot attack again till previous attack anim is complete. Not very fun.
-
         //currently does nothing but animate
         //will probably want to create an IDamagable interface for all our breakable objects
 
@@ -128,19 +125,18 @@ public class PlayerMovement : MonoBehaviour
             ToggleAnims(anim_params[3]);
     }
 
-    void ToggleAnims(string anim_on, float animator_speed = animator_default_speed)
-    {
-        //used to move player walk anim faster so the transition from walk to run is smoother using the same step in the sprite sheet
-        animator.speed = animator_speed;
 
-        //trigger on passed in animation
-        animator.SetTrigger(anim_on);
+    //would be good to moves this to an anim util class
+    void ToggleAnims(string anim_on)
+    {
+        //turn on passed in animation
+        animator.SetBool(anim_on, true);
 
         //turn off all anim params except the one passed in
         foreach (string anim_param in anim_params)
         {
             if (anim_param != anim_on)
-                animator.ResetTrigger(anim_param);
+                animator.SetBool(anim_param, false);
         }
     }
 }
