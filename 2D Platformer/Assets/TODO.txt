@@ -14,7 +14,7 @@ Add some type of world moving to the right "Mario Style" or using the Shadow Ene
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
 Breakable items need setup: Will probably want an idamagle interface for that. Also need to figure out how to "explode/break" objects.
 Some time of scenemanager will also be wanted
-Doing lights again? IInteractable interface?
+Doing lights again? IInteractable interface? Interactable abstract class?
 
 
 End Polish:
