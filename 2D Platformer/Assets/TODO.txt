@@ -1,9 +1,24 @@
+Achievements:
 Add some type of achievement system
 Some type of awards for completing achievements
+Some type of basic networking setup would be nice. Something as simple as an online leaderboard.
+Would be cool to have the "fastest player" get something special as long as they are still the fastest played based on the leaderboards.
+
+
+Timer:
 Add timer and a complete time
 Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1.
-Some type of basic networking setup would be nice. Something as simple as an online leaderboard. 
+ 
+
+ Misc:
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
-Breakable items need setup: Will probably want an idamagle interface for that. 
+Breakable items need setup: Will probably want an idamagle interface for that. Also need to figure out how to "explode/break" objects.
 Some time of scenemanager will also be wanted
-Doing lights again?
+Doing lights again? IInteractable interface?
+
+
+End Polish:
+Level design
+Implement some webgl safe post processing
+Same goes for particles affects
+sfx will need implemented
