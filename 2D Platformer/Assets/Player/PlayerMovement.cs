@@ -1,47 +1,32 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : RigidBodyMovement2D
 {
-    [Header("Movement")]
-    [SerializeField] float walk_speed = 10;
-    [SerializeField] float sprint_speed = 15;
-
-    Vector2 move_direction;
-    float move_speed;
-
-    [Header("Jump")]
-    [SerializeField] float jump_force = 50;
-
-    SpriteRenderer sprite_renderer;
-    Rigidbody2D rb;
-
     [Header("Animation")]
     Animator animator;
     const float walk_animation_speed = 1;
     const float run_animation_speed = 2;
     const string anim_speed_param = "Move Speed";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
-    
-    void Awake()
+
+    protected override void Awake()
     {
-        sprite_renderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
+        base.Awake();
+
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    protected override void Update()
     {
-        HandleMovement();
-        HandleJumping();
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.W))
+            Jump();
+
         HandleAttacking();
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = move_speed * move_direction;
-    }
-
-    void HandleMovement()
+    protected override void HandleMovement()
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
         //could do an if holding left (can move right == false and vice versa).
@@ -54,16 +39,14 @@ public class PlayerMovement : MonoBehaviour
             HandleIdle();
     }
 
-    void MoveRight()
+    protected override void MoveRight()
     {
-        sprite_renderer.flipX = false;
-
-        move_direction = Vector2.right;
+        base.MoveRight();
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //sprint
-            move_speed = sprint_speed;
+            move_speed = run_speed;
 
             ToggleAnims(anim_params[1]);
 
@@ -80,16 +63,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void MoveLeft()
+    protected override void MoveLeft()
     {
-        sprite_renderer.flipX = true;
-
-        move_direction = Vector2.left;
+        base.MoveLeft();
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //sprint
-            move_speed = sprint_speed;
+            move_speed = run_speed;
 
             ToggleAnims(anim_params[1]);
 
@@ -106,23 +87,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void HandleIdle()
+    protected override void HandleIdle()
     {
-        move_speed = 0;
+        base.HandleIdle();
 
         ToggleAnims(anim_params[0]);
-    }
-
-    void HandleJumping()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            rb.AddForce(jump_force * Vector2.up);
-
-            //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
-            //need to check if on ground. probably do 2 raycasts
-            //jump needs to be more smooth using add force.
-        }
     }
 
     void HandleAttacking()
