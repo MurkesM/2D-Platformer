@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     const float walk_animation_speed = 1;
     const float run_animation_speed = 2;
+    const string anim_speed_param = "Move Speed";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
-
+    
     void Awake()
     {
         sprite_renderer = GetComponent<SpriteRenderer>();
@@ -65,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
             move_speed = sprint_speed;
 
             ToggleAnims(anim_params[1]);
+
+            animator.SetFloat(anim_speed_param, run_animation_speed);
         }
         else
         {
@@ -72,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
             move_speed = walk_speed;
 
             ToggleAnims(anim_params[1]);
+
+            animator.SetFloat(anim_speed_param, walk_animation_speed);
         }
     }
 
@@ -87,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
             move_speed = sprint_speed;
 
             ToggleAnims(anim_params[1]);
+
+            animator.SetFloat(anim_speed_param, run_animation_speed);
         }
         else
         {
@@ -94,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
             move_speed = walk_speed;
 
             ToggleAnims(anim_params[1]);
+
+            animator.SetFloat(anim_speed_param, walk_animation_speed);
         }
     }
 
@@ -120,13 +129,14 @@ public class PlayerMovement : MonoBehaviour
     {
         //currently does nothing but animate
         //will probably want to create an IDamagable interface for all our breakable objects
+        //also will want to check if close enough to an object for a "hit" to occur
 
         if (Input.GetKeyDown(KeyCode.Space))
             ToggleAnims(anim_params[3]);
     }
 
 
-    //would be good to moves this to an anim util class
+    //might be good to move this to an anim util class
     void ToggleAnims(string anim_on)
     {
         //turn on passed in animation
