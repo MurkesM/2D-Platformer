@@ -1,0 +1,9 @@
+Add some type of achievement system
+Some type of awards for completing achievements
+Add timer and a complete time
+Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1.
+Some type of basic networking setup would be nice. Something as simple as an online leaderboard. 
+Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
+Breakable items need setup: Will probably want an idamagle interface for that. 
+Some time of scenemanager will also be wanted
+Doing lights again?
