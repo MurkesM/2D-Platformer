@@ -5,10 +5,31 @@ Some type of basic networking setup would be nice. Something as simple as an onl
 Would be cool to have the "fastest player" get something special as long as they are still the fastest played based on the leaderboards.
 
 
+UI:
+Start menu
+Controls Screen
+
+
 Timer:
 Add timer and a complete time
-Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1.
+
+
+Difuculty Selector:
+How would this work with leaderboards? 
+Enemy would just be faster?
+Would anything else happen?
  
+
+Enemy:
+Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. Actually I could make the enemy
+animated  character that comes with the platformer art. Could be a cool way to practice some AI.
+Create Enemy Object
+Setup Animations and Animator
+Setup AI movement
+AI Jumping
+AI Attacking the Player
+Should the enemy get faster oif lets say it almost hit you? 
+
 
  Misc:
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
