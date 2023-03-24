@@ -24,6 +24,7 @@ Enemy:
 Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. Actually I could make the enemy
 animated  character that comes with the platformer art. Could be a cool way to practice some AI.
 Create Enemy Object
+RigidBodyMovement2D is created and ready for an EnemyControls script to inherit from.
 Setup Animations and Animator
 Setup AI movement
 AI Jumping
