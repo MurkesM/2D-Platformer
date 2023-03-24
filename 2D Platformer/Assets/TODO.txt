@@ -1,8 +1,6 @@
 Achievements:
 Add some type of achievement system
 Some type of awards for completing achievements
-Some type of basic networking setup would be nice. Something as simple as an online leaderboard.
-Would be cool to have the "fastest player" get something special as long as they are still the fastest played based on the leaderboards.
 
 
 UI:
@@ -20,23 +18,25 @@ Enemy would just be faster?
 Would anything else happen?
  
 
+Networking:
+Some type of basic networking setup would be nice. Something as simple as an online leaderboard.
+Would be cool to have the "fastest player" get something special as long as they are still the fastest played based on the leaderboards. Would be kinda funny of the award was every time they jump a fart noise plays.
+User race eachother in realtime? Starting a lobby?
+
+
 Enemy:
 Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. Actually I could make the enemy
 animated  character that comes with the platformer art. Could be a cool way to practice some AI.
 Create Enemy Object
-RigidBodyMovement2D is created and ready for an EnemyControls script to inherit from.
-Setup Animations and Animator
-Setup AI movement
-AI Jumping
-AI Attacking the Player
-Should the enemy get faster oif lets say it almost hit you? 
+Enemy will be the cave collapsing in on the user.
 
 
- Misc:
+Misc:
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
 Breakable items need setup: Will probably want an idamagle interface for that. Also need to figure out how to "explode/break" objects.
 Some time of scenemanager will also be wanted
 Doing lights again? IInteractable interface? Interactable abstract class?
+Think about how you can implement custom shaders into this project so that you can get some basic shader experiance.
 
 
 End Polish:
@@ -44,3 +44,9 @@ Level design
 Implement some webgl safe post processing
 Same goes for particles affects
 sfx will need implemented
+would be nice to have a vignete affect on the camera
+
+
+Performance:
+Look into recomended performance metrics for WebGL
+Make sure to do solid performance testing
