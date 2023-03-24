@@ -36,7 +36,10 @@ Would be cool in some way to have a customizable character. Probably not super d
 Breakable items need setup: Will probably want an idamagle interface for that. Also need to figure out how to "explode/break" objects.
 Some time of scenemanager will also be wanted
 Doing lights again? IInteractable interface? Interactable abstract class?
-Think about how you can implement custom shaders into this project so that you can get some basic shader experiance.
+Think about how you can implement custom shaders into this project so that you can get some basic shader experiance. Using a disolve shader
+to maybe be part of a teleport feature or when the user attacks a certain type of object? 
+Shader for the moving wall. For the wall itself, meaning some type of crumbling or waving or tiling like a water fall but of a rock texture.
+Make it lava instead of rocks?
 
 
 End Polish:
@@ -50,3 +53,4 @@ would be nice to have a vignete affect on the camera
 Performance:
 Look into recomended performance metrics for WebGL
 Make sure to do solid performance testing
+see how this is running on an old laptop
