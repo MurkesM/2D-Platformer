@@ -23,17 +23,10 @@ public class RigidBodyMovement2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Update()
-    {
-        HandleMovement();
-    }
-
     protected virtual void FixedUpdate()
     {
         rb.velocity = move_speed * move_direction;
     }
-
-    protected virtual void HandleMovement() { }
 
     protected virtual void MoveRight()
     {

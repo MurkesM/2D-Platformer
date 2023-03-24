@@ -16,17 +16,18 @@ public class PlayerControls : RigidBodyMovement2D
         animator = GetComponent<Animator>();
     }
 
-    protected override void Update()
+    void Update()
     {
-        base.Update();
+        HandleMovement();
 
         if (Input.GetKeyDown(KeyCode.W))
             Jump();
 
-        HandleAttacking();
+        if (Input.GetKeyDown(KeyCode.Space))
+            Attack();
     }
 
-    protected override void HandleMovement()
+    void HandleMovement()
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
         //could do an if holding left (can move right == false and vice versa).
@@ -94,14 +95,13 @@ public class PlayerControls : RigidBodyMovement2D
         ToggleAnims(anim_params[0]);
     }
 
-    void HandleAttacking()
+    void Attack()
     {
         //currently does nothing but animate
         //will probably want to create an IDamagable interface for all our breakable objects
         //also will want to check if close enough to an object for a "hit" to occur
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            ToggleAnims(anim_params[3]);
+        ToggleAnims(anim_params[3]);
     }
 
 
