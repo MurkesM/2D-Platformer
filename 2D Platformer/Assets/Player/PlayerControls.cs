@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : RigidBodyMovement2D
+public class PlayerControls : RigidBodyMovement2D
 {
     [Header("Animation")]
     Animator animator;
