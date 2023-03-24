@@ -42,8 +42,9 @@ public class RigidBodyMovement2D : MonoBehaviour
         move_direction = Vector2.left;
     }
 
-    protected virtual void HandleIdle()
+    protected virtual void Idle()
     {
+        //set move speed to 0 so that the user stop's immediatly when not moving instead of sliding
         move_speed = 0;
     }
 
