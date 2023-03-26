@@ -42,6 +42,9 @@ Shader for the moving wall. For the wall itself, meaning some type of crumbling 
 Make it lava instead of rocks?
 
 
+Clean Up:
+Animator for player probably doesn't need all those transitions. Should just transition to others if others are true
+
 End Polish:
 Level design
 Implement some webgl safe post processing
