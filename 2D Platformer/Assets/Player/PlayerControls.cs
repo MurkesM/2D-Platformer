@@ -101,7 +101,7 @@ public class PlayerControls : RigidBodyMovement2D
     {
         //currently does nothing but animate
         //will probably want to create an IDamagable interface for all our breakable objects
-        //also will want to check if close enough to an object for a "hit" to occur
+        //also will want to check if close enough to an object for a "hit" to occur (use raycast)
 
         AnimationUtil.ToggleAnims(animator, anim_params[3], anim_params);
     }

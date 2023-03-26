@@ -715,7 +715,7 @@ GameObject:
   - component: {fileID: 1936295618}
   - component: {fileID: 1936295617}
   - component: {fileID: 1936295616}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,18 +889,6 @@ PrefabInstance:
     - target: {fileID: 2839350834265063890, guid: 58edbde1b1e0a34439bac24b01b7716e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738465951442677642, guid: 58edbde1b1e0a34439bac24b01b7716e, type: 3}
-      propertyPath: debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738465951442677642, guid: 58edbde1b1e0a34439bac24b01b7716e, type: 3}
-      propertyPath: run_speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738465951442677642, guid: 58edbde1b1e0a34439bac24b01b7716e, type: 3}
-      propertyPath: floor_layer.m_Bits
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

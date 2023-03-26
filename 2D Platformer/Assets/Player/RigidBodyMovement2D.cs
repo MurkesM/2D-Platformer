@@ -6,20 +6,19 @@ public class RigidBodyMovement2D : MonoBehaviour
     [Header("Movement")]
     [SerializeField] protected float walk_speed = 10;
     [SerializeField] protected float run_speed = 15;
-
     protected Vector2 move_direction;
     protected float move_speed;
 
     [Header("Jump")]
+    [SerializeField] protected Transform feet;
     [SerializeField] protected LayerMask floor_layer;
     [SerializeField] protected float jump_force = 50;
     protected bool can_jump = true;
+    float overlap_circle_radius = .05f;
+
 
     protected SpriteRenderer sprite_renderer;
-    
     protected Rigidbody2D rb;
-
-    [SerializeField] protected bool debug;
 
     protected virtual void Awake()
     {
@@ -31,8 +30,6 @@ public class RigidBodyMovement2D : MonoBehaviour
     {
         //movement
         rb.velocity = move_speed * move_direction;
-
-        can_jump = CheckJumpState();
     }
 
     protected virtual void MoveRight()
@@ -52,12 +49,13 @@ public class RigidBodyMovement2D : MonoBehaviour
     protected virtual void Idle()
     {
         //set move speed to 0 so that the user stop's immediatly when not moving instead of sliding
+        //Is there a way to do this simpler with a rigidbody setting?
         move_speed = 0;
     }
 
     protected virtual void Jump()
     {
-        if (!can_jump)
+        if (!CheckJumpState())
             return;
 
         can_jump = false;
@@ -65,33 +63,23 @@ public class RigidBodyMovement2D : MonoBehaviour
         rb.AddForce(jump_force * Vector2.up);
         
         //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
-        //need to check if on ground. probably do 2 raycasts
         //jump needs to be more smooth using add force.
+         
+
     }
 
     bool CheckJumpState()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .175f, floor_layer);
+        //maybe switch to OverlapCircleNonAloc? Need to check the tradeoff between memory and cpu most likely.
 
-        if (hit)
+        if (Physics2D.OverlapCircle(feet.position, overlap_circle_radius, floor_layer)) 
             can_jump = true;
-
-#if UNITY_EDITOR
-        if (debug)
-            DebugRayCast(hit);
-#endif
 
         return can_jump;
     }
 
-    void DebugRayCast(RaycastHit2D hit)
+    protected void OnDrawGizmos()
     {
-        Vector3 direction = transform.TransformDirection(Vector2.down) * .175f;
-
-        if (hit)
-            Debug.DrawRay(transform.position, direction, Color.green);
-
-        else
-            Debug.DrawRay(transform.position, direction, Color.red);
+        Gizmos.DrawSphere(feet.position, overlap_circle_radius);
     }
 }
