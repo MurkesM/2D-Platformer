@@ -53,11 +53,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963955514980562265}
+  - component: {fileID: 8738465951442677642}
   - component: {fileID: 2361474527749267732}
   - component: {fileID: 9155708752322659922}
   - component: {fileID: 2623751880604534398}
   - component: {fileID: 6276408382996549460}
-  - component: {fileID: 8738465951442677642}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -82,6 +82,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8738465951442677642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839350834265063890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d769ffe87e009f14f80d83fceb5548b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walk_speed: 2
+  run_speed: 15
+  floor_layer:
+    serializedVersion: 2
+    m_Bits: 0
+  jump_force: 1350
+  debug: 0
 --- !u!212 &2361474527749267732
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,21 +235,6 @@ CircleCollider2D:
   m_Offset: {x: 0.005053684, y: 0}
   serializedVersion: 2
   m_Radius: 0.11962427
---- !u!114 &8738465951442677642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2839350834265063890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d769ffe87e009f14f80d83fceb5548b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walk_speed: 2
-  sprint_speed: 3
-  jump_force: 1350
 --- !u!1 &4909513414380705362
 GameObject:
   m_ObjectHideFlags: 0

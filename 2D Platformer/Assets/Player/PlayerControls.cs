@@ -1,9 +1,8 @@
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerControls : RigidBodyMovement2D
 {
-    [Header("Animation")]
+    //Animation
     Animator animator;
     const float walk_animation_speed = 1;
     const float run_animation_speed = 2;
