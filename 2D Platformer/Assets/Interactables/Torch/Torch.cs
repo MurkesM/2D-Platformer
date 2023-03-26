@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class Torch : Interactable
+public class Torch : Interactable2D
 {
     const string anim_param = "Glow";
     [SerializeField] Animator animator;
 
-    public override void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
