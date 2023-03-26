@@ -97,6 +97,15 @@ public class PlayerControls : RigidBodyMovement2D
         }
     }
 
+    protected override void Jump()
+    {
+        base.Jump();
+
+        //animation doesn't work right. It only toggles jump if you just jumped. Not while your "jumping"
+
+        AnimationUtil.ToggleAnims(animator, anim_params[2], anim_params);
+    }
+
     void Attack()
     {
         //currently does nothing but animate
