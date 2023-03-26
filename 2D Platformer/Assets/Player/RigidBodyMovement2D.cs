@@ -77,19 +77,21 @@ public class RigidBodyMovement2D : MonoBehaviour
             can_jump = true;
 
 #if UNITY_EDITOR
-        OnDrawGizmos();
+        if (debug)
+            DebugRayCast(hit);
 #endif
 
         return can_jump;
     }
 
-    void OnDrawGizmos()
+    void DebugRayCast(RaycastHit2D hit)
     {
-        if (!debug)
-            return;
-
-        Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(Vector2.down) * .175f;
-        Gizmos.DrawRay(transform.position, direction);
+
+        if (hit)
+            Debug.DrawRay(transform.position, direction, Color.green);
+
+        else
+            Debug.DrawRay(transform.position, direction, Color.red);
     }
 }
