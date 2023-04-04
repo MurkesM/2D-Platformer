@@ -14,10 +14,19 @@ public class PlayerControls : RigidBodyMovement2D
         base.Awake();
 
         animator = GetComponent<Animator>();
+
+        JumpStateUpdated += SetJumpVisuals;
     }
 
-    void Update()
+    void OnDestroy()
     {
+        JumpStateUpdated -= SetJumpVisuals;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
         HandleMovement();
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -37,7 +46,7 @@ public class PlayerControls : RigidBodyMovement2D
     void HandleMovement()
     {
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
-        //could do an if holding left (can move right == false and vice versa).
+        //TODO: could do an if holding left (can move right == false and vice versa).
 
         //TODO: Need to go IDLE if not jumping, attcking etc. Dont just check if not moving.
 
@@ -45,7 +54,7 @@ public class PlayerControls : RigidBodyMovement2D
             MoveRight();
         else if (Input.GetKey(KeyCode.A))
             MoveLeft();
-        else
+        else if (!CheckJumpState())
             Idle();
     }
 
@@ -97,20 +106,22 @@ public class PlayerControls : RigidBodyMovement2D
         }
     }
 
-    protected override void Jump()
+    void SetJumpVisuals(bool is_jumping)
     {
-        base.Jump();
+        if (!is_jumping)
+            return;
 
-        //animation doesn't work right. It only toggles jump if you just jumped. Not while your "jumping"
+        //TODO: animation doesn't work right. It only toggles jump if you just jumped. Not while your "jumping"
+        //TODO: and/or never thinks the user isn't jumping
 
         AnimationUtil.ToggleAnims(animator, anim_params[2], anim_params);
     }
 
     void Attack()
     {
-        //currently does nothing but animate
-        //will probably want to create an IDamagable interface for all our breakable objects
-        //also will want to check if close enough to an object for a "hit" to occur (use raycast)
+        //TODO: currently does nothing but animate
+        //TODO: will probably want to create an IDamagable interface for all our breakable objects
+        //TODO: also will want to check if close enough to an object for a "hit" to occur (use raycast)
 
         AnimationUtil.ToggleAnims(animator, anim_params[3], anim_params);
     }
