@@ -29,6 +29,8 @@ Add some type of world moving to the right "Mario Style" or using the Shadow Ene
 animated  character that comes with the platformer art. Could be a cool way to practice some AI.
 Create Enemy Object
 Enemy will be the cave collapsing in on the user.
+Add a lava pit object.
+Add a turrent type thing that shoots at the user.
 
 
 Misc:
