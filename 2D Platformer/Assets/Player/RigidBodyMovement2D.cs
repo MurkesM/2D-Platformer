@@ -68,8 +68,6 @@ public class RigidBodyMovement2D : MonoBehaviour
             return;
 
         rb.AddForce(jump_force * Vector2.up);
-
-        //TODO: jump needs to be more smooth using add force.
     }
 
     /// <summary>

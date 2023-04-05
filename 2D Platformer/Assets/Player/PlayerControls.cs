@@ -67,9 +67,10 @@ public class PlayerControls : RigidBodyMovement2D
 
             //play run anim if not currently jumping
             if (!is_jumping)
+            {
                 AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
-
-            animator.SetFloat(anim_speed_param, run_animation_speed);
+                animator.SetFloat(anim_speed_param, run_animation_speed);
+            }
         }
         else
         {
@@ -78,9 +79,10 @@ public class PlayerControls : RigidBodyMovement2D
 
             //play walk anim if not currently jumping
             if (!is_jumping)
+            {
                 AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
-
-            animator.SetFloat(anim_speed_param, walk_animation_speed);
+                animator.SetFloat(anim_speed_param, walk_animation_speed);
+            }
         }
     }
 
@@ -95,9 +97,10 @@ public class PlayerControls : RigidBodyMovement2D
 
             //play run anim if not currently jumping
             if (!is_jumping)
+            {
                 AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
-
-            animator.SetFloat(anim_speed_param, run_animation_speed);
+                animator.SetFloat(anim_speed_param, run_animation_speed);
+            }
         }
         else
         {
@@ -106,9 +109,10 @@ public class PlayerControls : RigidBodyMovement2D
 
             //play walk anim if not currently jumping
             if (!is_jumping)
+            {
                 AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
-
-            animator.SetFloat(anim_speed_param, walk_animation_speed);
+                animator.SetFloat(anim_speed_param, walk_animation_speed);
+            }
         }
     }
 
