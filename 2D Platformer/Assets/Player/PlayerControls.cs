@@ -7,6 +7,7 @@ public class PlayerControls : RigidBodyMovement2D
     const float walk_animation_speed = 1;
     const float run_animation_speed = 2;
     const string anim_speed_param = "Move Speed";
+    const string anim_light_attack_state = "Light Attack anim";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
     protected override void Awake()
@@ -129,8 +130,8 @@ public class PlayerControls : RigidBodyMovement2D
         //TODO: currently does nothing but animate
         //TODO: will probably want to create an IDamagable interface for all our breakable objects or use the interactables class
         //TODO: also will want to check if close enough to an object for a "hit" to occur (use raycast)
-        //TODO: Pressing the attack button deosn;t seem to always work. Somethign stops it.
+        //TODO: Pressing the attack button deosn;t seem to always work. Somethign blocks it.
 
-        AnimationUtil.ToggleAnims(animator, anim_params[3], anim_params);
+        animator.Play(anim_light_attack_state, 0, 0f);
     }
 }
