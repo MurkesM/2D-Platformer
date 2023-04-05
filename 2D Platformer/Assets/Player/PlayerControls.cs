@@ -48,13 +48,11 @@ public class PlayerControls : RigidBodyMovement2D
         //TODO: move using the newest button pressed as your direction instead of defaulting to right
         //TODO: could do an if holding left (can move right == false and vice versa).
 
-        //TODO: Need to go IDLE if not jumping, attcking etc. Dont just check if not moving.
-
         if (Input.GetKey(KeyCode.D)) 
             MoveRight();
         else if (Input.GetKey(KeyCode.A))
             MoveLeft();
-        else if (!CheckJumpState())
+        else if (!is_jumping)
             Idle();
     }
 
@@ -67,7 +65,9 @@ public class PlayerControls : RigidBodyMovement2D
             //sprint
             move_speed = run_speed;
 
-            AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
+            //play run anim if not currently jumping
+            if (!is_jumping)
+                AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
 
             animator.SetFloat(anim_speed_param, run_animation_speed);
         }
@@ -76,7 +76,9 @@ public class PlayerControls : RigidBodyMovement2D
             //walk
             move_speed = walk_speed;
 
-            AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
+            //play walk anim if not currently jumping
+            if (!is_jumping)
+                AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
 
             animator.SetFloat(anim_speed_param, walk_animation_speed);
         }
@@ -91,7 +93,9 @@ public class PlayerControls : RigidBodyMovement2D
             //sprint
             move_speed = run_speed;
 
-            AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
+            //play run anim if not currently jumping
+            if (!is_jumping)
+                AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
 
             animator.SetFloat(anim_speed_param, run_animation_speed);
         }
@@ -100,7 +104,9 @@ public class PlayerControls : RigidBodyMovement2D
             //walk
             move_speed = walk_speed;
 
-            AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
+            //play walk anim if not currently jumping
+            if (!is_jumping)
+                AnimationUtil.ToggleAnims(animator, anim_params[1], anim_params);
 
             animator.SetFloat(anim_speed_param, walk_animation_speed);
         }
@@ -111,17 +117,15 @@ public class PlayerControls : RigidBodyMovement2D
         if (!is_jumping)
             return;
 
-        //TODO: animation doesn't work right. It only toggles jump if you just jumped. Not while your "jumping"
-        //TODO: and/or never thinks the user isn't jumping
-
         AnimationUtil.ToggleAnims(animator, anim_params[2], anim_params);
     }
 
     void Attack()
     {
         //TODO: currently does nothing but animate
-        //TODO: will probably want to create an IDamagable interface for all our breakable objects
+        //TODO: will probably want to create an IDamagable interface for all our breakable objects or use the interactables class
         //TODO: also will want to check if close enough to an object for a "hit" to occur (use raycast)
+        //TODO: Pressing the attack button deosn;t seem to always work. Somethign stops it.
 
         AnimationUtil.ToggleAnims(animator, anim_params[3], anim_params);
     }

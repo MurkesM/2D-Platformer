@@ -1,5 +1,4 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
@@ -15,8 +14,8 @@ public class RigidBodyMovement2D : MonoBehaviour
     [SerializeField] protected float jump_force = 50;
     [SerializeField] protected Transform feet;
     [SerializeField] protected LayerMask floor_layer;
-    [SerializeField] protected bool can_jump = true;
-    [SerializeField] protected bool is_jumping = false;
+    protected bool can_jump = true;
+    protected bool is_jumping = false;
     float overlap_circle_radius = .05f;
 
     public Action<bool> JumpStateUpdated;
@@ -70,7 +69,6 @@ public class RigidBodyMovement2D : MonoBehaviour
 
         rb.AddForce(jump_force * Vector2.up);
 
-        //TODO: Play jump animation. Do after checking if jumping or else will be hard to test.
         //TODO: jump needs to be more smooth using add force.
     }
 
@@ -80,7 +78,8 @@ public class RigidBodyMovement2D : MonoBehaviour
     /// <returns></returns>
     protected bool CheckJumpState()
     {
-        //TODO: Find a way to not call this every frame or find a different way to check jump state.
+        //TODO: Find a way to not call this every frame or find a different way to check jump state if you have to keep in update loop.
+        //TODO: maybe see how useing a collider would work. 
         //TODO: maybe switch to OverlapCircleNonAloc? Need to check the tradeoff between memory and cpu most likely.
 
         if (Physics2D.OverlapCircle(feet.position, overlap_circle_radius, floor_layer))
@@ -91,17 +90,23 @@ public class RigidBodyMovement2D : MonoBehaviour
         return can_jump;
     }
 
-    void SetJumpState(bool can_jump)
+    /// <summary>
+    /// Set's whether the user can jump and whether the user is currently jumping.
+    /// </summary>
+    /// <param name="can_jump"></param>
+    protected void SetJumpState(bool can_jump)
     {
         this.can_jump = can_jump;
         is_jumping = !can_jump;
 
-        //events
-        JumpStateUpdated?.Invoke(can_jump);
+        //send event
+        JumpStateUpdated?.Invoke(is_jumping);
     }
-    
+
+#if UNITY_EDITOR
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawSphere(feet.position, overlap_circle_radius);
     }
+#endif
 }
