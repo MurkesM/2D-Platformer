@@ -3,7 +3,7 @@ using UnityEngine;
 public static class AnimationUtil
 {
     /// <summary>
-    /// Sets the specified animator paramater to true and set's the rest to false.
+    /// Sets the specified animator paramater to true and set's the specified list of params to false.
     /// </summary>
     /// <param name="animator"></param>
     /// <param name="anim_to_turn_on"></param>
