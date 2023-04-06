@@ -133,4 +133,9 @@ public class PlayerControls : RigidBodyMovement2D
 
         animator.Play(anim_light_attack_state, 0, 0f);
     }
+
+    public static void KillPlayer()
+    {
+        print("Kill Player");
+    }
 }
