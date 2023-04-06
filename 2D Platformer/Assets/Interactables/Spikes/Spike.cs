@@ -4,9 +4,9 @@ public class Spike : Interactable2D
 {
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag(playerLayer))
         {
-            //hurt player
+            PlayerControls.KillPlayer();
         }
     }
 }

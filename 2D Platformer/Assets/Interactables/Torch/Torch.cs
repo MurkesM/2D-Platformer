@@ -8,9 +8,9 @@ public class Torch : Interactable2D
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag(playerLayer))
         {
-            if (animator != null && is_interactable)
+            if (animator != null && isInteractable)
                 StartCoroutine(GlowRoutine());
         }
     }
@@ -19,7 +19,7 @@ public class Torch : Interactable2D
     {
         //play anim for set amount of time and remove the ability to trigger the anim again
         animator.SetBool(anim_param, true);
-        is_interactable = false;
+        isInteractable = false;
         yield return new WaitForSeconds(3);
 
         //stop anim and and coroutine
