@@ -8,7 +8,7 @@ public class Torch : Interactable2D
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(playerLayer))
+        if (other.CompareTag(playerTag))
         {
             if (animator != null && isInteractable)
                 StartCoroutine(GlowRoutine());
