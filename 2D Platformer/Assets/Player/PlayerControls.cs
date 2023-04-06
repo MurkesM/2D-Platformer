@@ -129,8 +129,7 @@ public class PlayerControls : RigidBodyMovement2D
     {
         //TODO: currently does nothing but animate
         //TODO: will probably want to create an IDamagable interface for all our breakable objects or use the interactables class
-        //TODO: also will want to check if close enough to an object for a "hit" to occur (use raycast)
-        //TODO: Pressing the attack button deosn;t seem to always work. Somethign blocks it.
+        //TODO: also will want to check if close enough to an object for a "hit" to occur (use overlap circle)
 
         animator.Play(anim_light_attack_state, 0, 0f);
     }
