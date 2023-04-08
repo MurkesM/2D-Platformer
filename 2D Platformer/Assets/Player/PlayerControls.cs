@@ -10,6 +10,8 @@ public class PlayerControls : RigidBodyMovement2D
     const string anim_light_attack_state = "Light Attack anim";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
+    //TODO maybe seperate out the controls into their own class and other player related things into their own.
+
     protected override void Awake()
     {
         base.Awake();
