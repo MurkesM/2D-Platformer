@@ -4,11 +4,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [Header("Barrel")]
-
-    [Tooltip("Represent the end of the barrel where the projectile should spawn from")]
-    [SerializeField] GameObject barrel_end;
-
-    [SerializeField] GameObject barrel_pivot;
+    [SerializeField] GameObject barrel;
     [SerializeField] float barrel_rotation_speed = 90;
     [SerializeField] float smoothTime = 0.3f;
     Vector3 target_direction = new();
@@ -42,8 +38,8 @@ public class Turret : MonoBehaviour
         {
             target_position = other.transform.position;
 
-            //Determine which direction to rotate towards
-            target_direction = target_position - barrel_pivot.transform.position;
+            //Determine which direction to rotate the turret towards
+            target_direction = target_position - barrel.transform.position;
 
             //Determine the angle in between the forward direction of the barrel pivot and the target
             targetAngle = Vector2.SignedAngle(Vector2.down, target_direction);
@@ -52,7 +48,7 @@ public class Turret : MonoBehaviour
             angle = Mathf.SmoothDampAngle(angle, targetAngle, ref currentVelocity, smoothTime, barrel_rotation_speed);
 
             //rotate by angle
-            barrel_pivot.transform.eulerAngles = new Vector3(0, 0, angle);
+            barrel.transform.eulerAngles = new Vector3(0, 0, angle);
         }
     }
 
@@ -66,7 +62,7 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
-            GameObject new_projectile = Instantiate(projectile, barrel_end.transform.position, Quaternion.identity, this.transform);
+            GameObject new_projectile = Instantiate(projectile, barrel.transform.position, Quaternion.identity, this.transform);
 
             new_projectile.GetComponent<TurretProjectile>().SetTarget(target_position);
 

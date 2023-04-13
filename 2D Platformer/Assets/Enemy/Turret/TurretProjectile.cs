@@ -18,6 +18,7 @@ public class TurretProjectile : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, target * 1.75f, move_speed * Time.deltaTime);
+        transform.rotation.SetLookRotation(target);
 
         time_alive = Time.time;
 
