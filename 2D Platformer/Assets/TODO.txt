@@ -1,51 +1,27 @@
-Achievements:
-Add some type of achievement system
-Some type of awards for completing achievements
-
+World Building:
+1 level
+Still need to figure out what happens if you reach the end
 
 UI:
 Start menu
 Controls Screen
 
-
 Timer:
 Add timer and a complete time
 
-
-Difuculty Selector:
-How would this work with leaderboards? 
-Enemy would just be faster?
-Would anything else happen?
- 
-
-Networking:
-Some type of basic networking setup would be nice. Something as simple as an online leaderboard.
-Would be cool to have the "fastest player" get something special as long as they are still the fastest played based on the leaderboards. Would be kinda funny of the award was every time they jump a fart noise plays.
-User race eachother in realtime? Starting a lobby?
-
-
 Enemy:
-Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. Actually I could make the enemy
-animated  character that comes with the platformer art. Could be a cool way to practice some AI.
-Create Enemy Object
-Enemy will be the cave collapsing in on the user.
-Add a lava pit object.
-Add a turrent type thing that shoots at the user.
+Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. 
 
+Interactables:
+turrent
+spikes
+lava
+cutable objects. Probably some type of stick, web or grass that exist in the art. 
+Lever and wall system
+lantern system
 
 Misc:
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
-Breakable items need setup: Will probably want an idamagle interface for that. Also need to figure out how to "explode/break" objects.
-Some time of scenemanager will also be wanted
-Doing lights again? IInteractable interface? Interactable abstract class?
-Think about how you can implement custom shaders into this project so that you can get some basic shader experiance. Using a disolve shader
-to maybe be part of a teleport feature or when the user attacks a certain type of object? 
-Shader for the moving wall. For the wall itself, meaning some type of crumbling or waving or tiling like a water fall but of a rock texture.
-Make it lava instead of rocks?
-
-
-Clean Up:
-Animator for player probably doesn't need all those transitions. Should just transition to others if others are true
 
 End Polish:
 Level design
@@ -54,8 +30,7 @@ Same goes for particles affects
 sfx will need implemented
 would be nice to have a vignete affect on the camera
 
-
 Performance:
 Look into recomended performance metrics for WebGL
 Make sure to do solid performance testing
-see how this is running on an old laptop
+maybe see how this is running on an old laptop
