@@ -13,7 +13,7 @@ Enemy:
 Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. 
 
 Interactables:
-turrent
+turret
 spikes
 lava
 cutable objects. Probably some type of stick, web or grass that exist in the art. 
