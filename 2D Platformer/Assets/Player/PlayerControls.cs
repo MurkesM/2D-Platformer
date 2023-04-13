@@ -10,8 +10,6 @@ public class PlayerControls : RigidBodyMovement2D
     const string anim_light_attack_state = "Light Attack anim";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
-    //TODO maybe seperate out the controls into their own class and other player related things into their own.
-
     protected override void Awake()
     {
         base.Awake();
@@ -130,8 +128,6 @@ public class PlayerControls : RigidBodyMovement2D
     void Attack()
     {
         //TODO: currently does nothing but animate
-        //TODO: will probably want to create an IDamagable interface for all our breakable objects or use the interactables class
-        //TODO: also will want to check if close enough to an object for a "hit" to occur (use overlap circle)
 
         animator.Play(anim_light_attack_state, 0, 0f);
     }
