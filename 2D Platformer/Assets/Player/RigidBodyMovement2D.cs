@@ -16,7 +16,7 @@ public class RigidBodyMovement2D : MonoBehaviour
     [SerializeField] protected LayerMask floor_layer;
     protected bool can_jump = true;
     protected bool is_jumping = false;
-    float overlap_circle_radius = .05f;
+    float jump_circle_radius = .05f;
 
     public Action<bool> JumpStateUpdated;
 
@@ -80,7 +80,7 @@ public class RigidBodyMovement2D : MonoBehaviour
         //TODO: maybe see how useing a collider would work. 
         //TODO: maybe switch to OverlapCircleNonAloc? Need to check the tradeoff between memory and cpu most likely.
 
-        if (Physics2D.OverlapCircle(feet.position, overlap_circle_radius, floor_layer))
+        if (Physics2D.OverlapCircle(feet.position, jump_circle_radius, floor_layer))
             SetJumpState(true);
         else
             SetJumpState(false);
@@ -104,7 +104,7 @@ public class RigidBodyMovement2D : MonoBehaviour
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(feet.position, overlap_circle_radius);
+        Gizmos.DrawSphere(feet.position, jump_circle_radius);
     }
 #endif
 }
