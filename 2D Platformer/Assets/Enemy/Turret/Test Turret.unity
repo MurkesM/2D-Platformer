@@ -459,25 +459,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4143689724874410274, guid: d7521dbb26a48bc4a88e6c9dde4b77e0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6656363369587243157, guid: d7521dbb26a48bc4a88e6c9dde4b77e0, type: 3}
-      propertyPath: fire_speed
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6656363369587243157, guid: d7521dbb26a48bc4a88e6c9dde4b77e0, type: 3}
-      propertyPath: barrel_rotation_speed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8135558352298463302, guid: d7521dbb26a48bc4a88e6c9dde4b77e0, type: 3}
       propertyPath: m_Name
       value: Turret
-      objectReference: {fileID: 0}
-    - target: {fileID: 8352087547808953464, guid: d7521dbb26a48bc4a88e6c9dde4b77e0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.344
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,10 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [Header("Barrel")]
-    [SerializeField] GameObject barrel;
+
+    [Tooltip("Represent the end of the barrel where the projectile should spawn from")]
+    [SerializeField] GameObject barrel_end;
+
     [SerializeField] GameObject barrel_pivot;
     [SerializeField] float barrel_rotation_speed = 90;
     [SerializeField] float smoothTime = 0.3f;
@@ -63,7 +66,7 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
-            GameObject new_projectile = Instantiate(projectile, barrel.transform.position, Quaternion.identity, this.transform);
+            GameObject new_projectile = Instantiate(projectile, barrel_end.transform.position, Quaternion.identity, this.transform);
 
             new_projectile.GetComponent<TurretProjectile>().SetTarget(target_position);
 
