@@ -437,10 +437,10 @@ TextureImporter:
         x: 224
         y: 1200
         width: 160
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 0, z: 1, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -4892,8 +4892,8 @@ TextureImporter:
       name: main_lev_build_20
       rect:
         serializedVersion: 2
-        x: 1085
-        y: 1264
+        x: 704
+        y: 1152
         width: 32
         height: 16
       alignment: 0
@@ -17716,7 +17716,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 4, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -22836,7 +22836,7 @@ TextureImporter:
         height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 13, y: 0, z: 20, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -40509,12 +40509,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1152
-        y: 307
+        y: 304
         width: 144
-        height: 108
+        height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 2, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
