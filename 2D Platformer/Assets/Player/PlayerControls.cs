@@ -10,6 +10,9 @@ public class PlayerControls : RigidBodyMovement2D
     const string anim_light_attack_state = "Light Attack anim";
     readonly string[] anim_params = { "Idle", "Walk", "Jump", "Light Attack"};
 
+    [SerializeField] LayerMask breakable_layer;
+    float attack_radius = .20f;
+
     protected override void Awake()
     {
         base.Awake();
@@ -130,10 +133,23 @@ public class PlayerControls : RigidBodyMovement2D
         //TODO: currently does nothing but animate
 
         animator.Play(anim_light_attack_state, 0, 0f);
+
+        if (Physics2D.OverlapCircle(transform.position, attack_radius, breakable_layer))
+            BreakableObject.BreakObjectsInRange();
     }
 
     public static void KillPlayer()
     {
         print("Kill Player");
     }
+
+#if UNITY_EDITOR
+    protected override void OnDrawGizmos()
+    { 
+        base.OnDrawGizmos();
+
+        if (debug)
+            Gizmos.DrawSphere(transform.position, attack_radius);
+    }
+#endif
 }

@@ -23,6 +23,9 @@ public class RigidBodyMovement2D : MonoBehaviour
     protected SpriteRenderer sprite_renderer;
     protected Rigidbody2D rb;
 
+    [Tooltip("Currenty is used to toggle whether or not to Draw Gizmos")]
+    public bool debug = false;
+
     protected virtual void Awake()
     {
         sprite_renderer = GetComponent<SpriteRenderer>();
@@ -104,7 +107,8 @@ public class RigidBodyMovement2D : MonoBehaviour
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(feet.position, jump_circle_radius);
+        if (debug)
+            Gizmos.DrawSphere(feet.position, jump_circle_radius);
     }
 #endif
 }
