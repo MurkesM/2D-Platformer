@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8455689406785653621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5669, y: 0.08223916, z: 0}
-  m_LocalScale: {x: 4.5179, y: 2.25895, z: 4.5179}
+  m_LocalScale: {x: 1.5098822, y: 0.84123296, z: 4.5179}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5458945310483460446}
@@ -204,11 +204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7281458279186318780, guid: 38f533bc0ae3b124bbd56fd08684ba82, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 4.55
+      value: 1.5079566
       objectReference: {fileID: 0}
     - target: {fileID: 7281458279186318780, guid: 38f533bc0ae3b124bbd56fd08684ba82, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7281458279186318780, guid: 38f533bc0ae3b124bbd56fd08684ba82, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
