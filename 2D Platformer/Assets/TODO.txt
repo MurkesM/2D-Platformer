@@ -13,11 +13,11 @@ Enemy:
 Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. 
 
 Interactables:
-turret
-spikes
-lava
+turret (done)
+spikes (done)
+lava (done)
 cutable objects. Probably some type of stick, web or grass that exist in the art. 
-Lever and wall system
+Lever and wall system (done)
 lantern system
 
 Misc:
