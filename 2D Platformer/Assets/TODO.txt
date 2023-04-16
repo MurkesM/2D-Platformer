@@ -7,30 +7,28 @@ Start menu
 Controls Screen
 
 Timer:
-Add timer and a complete time
+Add timer and a complete time (done)
+add a UI visual for best time, and safe it in player prefs (done)
+
+Game Flow:
+Start Game
+Lose Game
+Restart Game or Main Menu
 
 Enemy:
-Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. 
+Add some type of world moving to the right "Mario Style" or using the Shadow Enemy idea from v1. (done)
 
 Interactables:
 turret (done)
 spikes (done)
 lava (done)
-cutable objects. Probably some type of stick, web or grass that exist in the art. 
+cutable objects. Probably some type of stick, web or grass that exist in the art. (done)
 Lever and wall system (done)
-lantern system
+lantern system (done)
 
 Misc:
 Would be cool in some way to have a customizable character. Probably not super doable with the red hood character. 
 
 End Polish:
-Level design
-Implement some webgl safe post processing
-Same goes for particles affects
-sfx will need implemented
+1 backgroud music player, jumping sounds, and attacking sounds
 would be nice to have a vignete affect on the camera
-
-Performance:
-Look into recomended performance metrics for WebGL
-Make sure to do solid performance testing
-maybe see how this is running on an old laptop
