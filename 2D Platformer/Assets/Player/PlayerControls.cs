@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerControls : RigidBodyMovement2D
@@ -12,6 +13,9 @@ public class PlayerControls : RigidBodyMovement2D
 
     [SerializeField] LayerMask breakable_layer;
     float attack_radius = .20f;
+
+    public static Action PlayerKilled;
+    public static Action PlayerFinishedGame;
 
     protected override void Awake()
     {
@@ -141,6 +145,17 @@ public class PlayerControls : RigidBodyMovement2D
     public static void KillPlayer()
     {
         print("Kill Player");
+
+        //send event
+        PlayerKilled();
+    }
+
+    public static void FinishGame()
+    {
+        print("Player Finished the Game!");
+
+        //send event
+        PlayerFinishedGame();
     }
 
 #if UNITY_EDITOR
